@@ -73,7 +73,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
     <section class="booking-intro">
 
         <div class="booking-grid">
-            <p class="eyebrow">Reservations • Walk-ins welcome</p>
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <p class="eyebrow-text">Reservations • Walk-ins welcome</p>
+            </div>
+            
 
             <h1>Reserve your table.</h1>
 
@@ -141,8 +145,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
 
                 <!-- CUSTOMER INFORMATION -->
                 <div class="form-section">
-
-                    <h3>Personal information</h3>
 
                     <div class="form-grid">
 

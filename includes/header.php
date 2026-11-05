@@ -17,7 +17,7 @@
         <a href="menu.php">Menu</a>
         <a href="about.php">About US</a>
         <a href="contact.php">Contact</a>
-        <a href="reservation.php">Booking</a>
+        <a href="booking_status.php">Check Booking</a>
     </nav>
 
     <div class="header-right">

@@ -23,7 +23,11 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <p class="eyebrow"> DAGUPAN CITY &bull; KOREAN BBQ </p>
+                <div class=eyebrow>
+                    <span class="eyebrow-line"></span>
+                    <p class="eyebrow-text"> DAGUPAN CITY &bull; KOREAN BBQ </p>
+                </div>
+                
 
                 <h1>Your Korean BBQ Experience Starts Here.</h1>
 
@@ -37,7 +41,7 @@
                         </a>
                     </div>
                     <div hero-btn2>
-                        <a href="menu.php" class="menu-btn">
+                        <a href="menu.php" class="hero-menu-btn">
                             <i class="fa-solid fa-book-open"></i>
                             Explore Our Menu
                         </a>
@@ -51,7 +55,7 @@
 
                 <div class="advertise">
                     <div class="advertise-box">
-                        <span><i class="fa-solid fa-fire"></i></span>
+                        <span><i class="fa-solid fa-fire-flame-curved"></i></span>
                         <h3>Live Charcoal Grilll</h3>
                         <p>Sizzlin, smoky, authetic</p>
                     </div>
@@ -82,7 +86,7 @@
                                 <i class="fa-regular fa-circle-check"></i>
                             </div>
                             <div class="hero-image-in-detail">
-                                <h3>Peding &ne; Confirmed</h3>
+                                <h3>Pending &ne; Confirmed</h3>
                                 <p>Start confirm every request</p>
                             </div>    
                         </div>
@@ -99,9 +103,15 @@
 
             <div class="hero-bottom">
                 <span>무한 삼겹살 • UNLI SAMGYUPSAL</span>
-                <span>CHARCOAL-GRILLED IN DAGUPAN</span>
+                <span>
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                    CHARCOAL-GRILLED IN DAGUPAN
+                </span>
                 <span>신선한 반찬 • FRESH BANCHAN DAILY</span>
-                <span>ARELLANO ST. • 11AM–9PM</span>
+                <span>
+                    <i class="fa-solid fa-location-dot"></i>
+                    ARELLANO ST. • 11AM–9PM
+                </span>
             </div>
 
         </section>
