@@ -1,5 +1,10 @@
 
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Controllers\BookingController;
+use App\Services\BookingService;
+
 // reservation.php
 
 $errors = [];

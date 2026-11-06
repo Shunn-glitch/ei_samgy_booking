@@ -1,3 +1,10 @@
+<?php 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Data\MenuData;
+$hotDealsPackages = MenuData::getHotDeals();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +15,22 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js" defer></script>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" 
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" 
+        integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer"
+    >
 
 </head>
 
@@ -34,13 +51,13 @@
                 <p class="hero-description">Sizzle, wrap, and share. Unlimited samgyupsal, generous banchan, and a warm Dagupan welcome — perfect for barkada nights and family feasts.</p>
 
                 <div class="hero-buttons">
-                    <div hero-btn1>
+                    <div class="hero-btn1">
                         <a href="reservation.php" class="hero-btn-r1">
                             Reserve a Table
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
-                    <div hero-btn2>
+                    <div class="hero-btn2">
                         <a href="menu.php" class="hero-menu-btn">
                             <i class="fa-solid fa-book-open"></i>
                             Explore Our Menu
@@ -135,113 +152,51 @@
             </div>
 
             <div class="deals-grid">
-
-                <!-- PACKAGE 1 -->
-                <div class="deal-card">
-                    <div class="deal-image">
-                        <img src="assets/images/classic_unli_samgy.jpg" alt="Classic Unli Samgy">
-                        <span class="deal-badge">Best selller</span>
-                        <div class="deal-price">
-                            <h3>₱299</h3>
-                            <span>/ head</span>
+                <?php foreach ($hotDealsPackages as $package): ?>
+                    <div class="deal-card">
+                        <div class="deal-image">
+                            <img
+                                src="<?= htmlspecialchars($package['image']) ?>"
+                                alt="<?= htmlspecialchars($package['name']) ?>"
+                            >
+                            <?php if (!empty($package['badge'])): ?>
+                                <span class="deal-badge">
+                                    <?= htmlspecialchars($package['badge']) ?>
+                                </span>
+                            <?php endif; ?>
+                            <div class="deal-price">
+                                <h3><?= htmlspecialchars($package['price']) ?></h3>
+                                <span>/ <?= htmlspecialchars($package['unit']) ?></span>
+                            </div>
+                        </div>
+                        <div class="deal-content">
+                            <h3><?= htmlspecialchars($package['name']) ?></h3>
+                            <p class="deal-description">
+                                <?= htmlspecialchars($package['description']) ?>
+                            </p>
+                            <div class="deal-details">
+                                <div class="deal-pack">
+                                    <span>
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                    <?= htmlspecialchars($package['inclusions']) ?>
+                                </div>
+                                <div class="deal-status">
+                                    <span>
+                                        <i class="fa-solid fa-basket-shopping"></i>
+                                    </span>
+                                    <?= htmlspecialchars($package['status']) ?>
+                                </div>
+                            </div>
+                            <a
+                                href="<?= htmlspecialchars($package['link']) ?>"
+                                class="deal-button"
+                            >
+                                View package
+                            </a>
                         </div>
                     </div>
-
-                    <div class="deal-content">
-                        <h3>Classic Unli Samgy</h3>
-                        <p class="deal-description">
-                            Unlimited pork samgyupsal, chicken, rice, soup and house banchan.
-                        </p>
-
-                        <div class="deal-details">
-                            
-                            <p class="deal-pack">
-                                <span><i class="fa-solid fa-check"></i></span> 
-                                Unli pork • 6 banchan • rice & soup
-                            </p>
-                            <p class="deal-duration">
-                                <span><i class="fa-regular fa-clock"></i></span> 
-                                90-min dining • Sample inclusions
-                            </p>
-                        </div>
-                        <a href="booking.php?package=pork" class="deal-button">
-                            View package
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- PACKAGE 2 -->
-                <div class="deal-card">
-                    <div class="deal-image">
-                        <img src="assets/images/premium_beef_&_pork.jpg" alt="Premium Beef & Pork">
-                        <span class="deal-badge">For sharing</span>
-                        <div class="deal-price">
-                            <h3>₱349</h3>
-                            <span>/ head</span>
-                        </div>
-                    </div>
-
-                    <div class="deal-content">
-                        <h3>Premium Beef & Pork</h3>
-                        <p class="deal-description">
-                            Beef galbi + pork cuts, cheese dip, lettuce wraps and iced tea.
-                        </p>
-
-                        <div class="deal-details">
-                            
-                            <p class="deal-packs">
-                                <span><i class="fa-solid fa-check"></i></span> 
-                                Beef + pork • cheese • 8 banchan
-                            </p>
-                            <p class="deal-duration">
-                                <span><i class="fa-regular fa-clock"></i></span> 
-                                90-min dining • Sample inclusions
-                            </p>
-                        </div>
-                        <a href="booking.php?package=pork" class="deal-button">
-                            View package
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- PACKAGE 3 -->
-                <div class="deal-card">
-                    <div class="deal-image">
-                        <img src="assets/images/barkada_bundles.jpg" alt="Barkada Bundle">
-                        <span class="deal-badge">Barkada pick</span>
-                        <div class="deal-price">
-                            <h3>₱1,099</h3>
-                            <span>/ bundle</span>
-                        </div>
-                    </div>
-
-                    <div class="deal-content">
-                        <h3>Barkada Bundle — 4 pax</h3>
-                        <p class="deal-description">
-                            Good for four. All classic inclusions plus extra meat platter.
-                        </p>
-
-                        <div class="deal-details">
-                            
-                            <p class="deal-packs">
-                                <span><i class="fa-solid fa-check"></i></span> 
-                                4 pax • extra platter • pitcher iced tea
-                            </p>
-                            <p class="deal-duration">
-                                <span><i class="fa-regular fa-clock"></i></span> 
-                                90-min dining • Sample inclusions
-                            </p>
-                        </div>
-                        <a href="booking.php?package=pork" class="deal-button">
-                            View package
-                        </a>
-                    </div>
-
-                </div>
-
-        
+                <?php endforeach; ?>
             </div>
 
             <div class="deal-info">

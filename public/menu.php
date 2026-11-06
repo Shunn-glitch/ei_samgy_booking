@@ -1,46 +1,12 @@
-<?php
-$menuPackages = [
-    [
-        "name" => "Classic Unli Samgy",
-        "image" => "assets/images/classic_unli_samgy.jpg",
-        "price" => "₱299",
-        "unit" => "head",
-        "badge" => "Best seller",
-        "description" => "Unlimited pork samgyupsal, chicken, rice, soup and house banchan.",
-        "inclusions" => "Unli pork • 6 banchan • rice & soup",
-        "duration" => "90-min dining • Sample inclusions",
-        "link" => "booking.php?package=pork"
-    ],
+<?php 
+require_once __DIR__ . '/../vendor/autoload.php';
 
-    [
-        "name" => "Premium Beef & Pork",
-        "image" => "assets/images/premium_beef_&_pork.jpg",
-        "price" => "₱349",
-        "unit" => "head",
-        "badge" => "For sharing",
-        "description" => "Beef galbi + pork cuts, cheese dip, lettuce wraps and iced tea.",
-        "inclusions" => "Beef + pork • cheese • 8 banchan",
-        "duration" => "90-min dining • Sample inclusions",
-        "link" => "booking.php?package=premium"
-    ],
-
-    [
-        "name" => "Barkada Bundle — 4 pax",
-        "image" => "assets/images/barkada_bundles.jpg",
-        "price" => "₱1,099",
-        "unit" => "bundle",
-        "badge" => "Barkada pick",
-        "description" => "Good for four. All classic inclusions plus extra meat platter.",
-        "inclusions" => "4 pax • extra platter • pitcher iced tea",
-        "duration" => "90-min dining • Sample inclusions",
-        "link" => "booking.php?package=barkada"
-    ],
-    
-
-];
+use App\Data\MenuData;
+$mainMealPackages = MenuData::getMainMeals();
+$mealPlatterPackages = MenuData::getMealPlatters();
+$premiumRiceBowlsPackages = MenuData::getPremiumRiceBowls();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,10 +38,10 @@ $menuPackages = [
                 <p class="menu-header-texts">Premium Korean BBQ, shared sides and cold drinks. Pick your favorites, then reserve your table.</p>
 
                 <div class="menu-header-choices">
-                    <div class="menu-header-choice">À la carte</div>
-                    <div class="menu-header-choice">Banchan</div>
-                    <div class="menu-header-choice">Rice &amp; Soup</div>
-                    <div class="menu-header-choice">Drinks &amp; Desserts</div>
+                    <a href="#mainMealSection" class="menu-header-choice">Main Meal</a>
+                    <a href="#mealPlatterSection" class="menu-header-choice">Meal Platter</a>
+                    <a href="#premiumRiceBowlsSection" class="menu-header-choice">Premium Rice Bowls</a>
+                    <a href="" class="menu-header-choice">Drinks &amp; Desserts</a>
                 </div>
             </div>
 
@@ -89,18 +55,20 @@ $menuPackages = [
         </div>
     </section>
 
-    <section class="first-menu">
+    <section class="full-menu" id="mainMealSection">
         <div class="full-menu-header">
             <div class="full-menu-group">
-                <p class="full-menu-eyebrow">À LA CARTE</p>
-                <h3>Grill Meats</h3>
+                <p class="full-menu-eyebrow">Main Meal</p>
+                <h3>Main Meal</h3>
+                <p class="full-menu-texts">
+                    Enjoy the juiciest premium samgyupsal in town, 
+                    paired with unlimited side dishes. Come hungry, leave happy
+                </p>
             </div>
-            <div class="full-menu-group full-menu-header-left">
-                <p>Marinated daily and sliced thin for the grill.</p>
-            </div>
+            
         </div>
         <div class="deals-grid">
-            <?php foreach ($menuPackages as $package): ?>
+            <?php foreach ($mainMealPackages as $package): ?>
                 <div class="deal-card">
                     <div class="deal-image">
                         <img
@@ -123,18 +91,140 @@ $menuPackages = [
                             <?= htmlspecialchars($package['description']) ?>
                         </p>
                         <div class="deal-details">
-                            <p class="deal-pack">
+                            <div class="deal-pack">
                                 <span>
                                     <i class="fa-solid fa-check"></i>
                                 </span>
                                 <?= htmlspecialchars($package['inclusions']) ?>
-                            </p>
-                            <p class="deal-duration">
+                            </div>
+                            <div class="deal-status">
                                 <span>
-                                    <i class="fa-regular fa-clock"></i>
+                                    <i class="fa-solid fa-basket-shopping"></i>
                                 </span>
-                                <?= htmlspecialchars($package['duration']) ?>
-                            </p>
+                                <?= htmlspecialchars($package['status']) ?>
+                            </div>
+                        </div>
+                        <a
+                            href="<?= htmlspecialchars($package['link']) ?>"
+                            class="deal-button"
+                        >
+                            View package
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <section class="full-menu" id="mealPlatterSection">
+        <div class="full-menu-header">
+            <div class="full-menu-group">
+                <p class="full-menu-eyebrow">Featured placeholder</p>
+                <h3>Meal Splatter</h3>
+                <p class="full-menu-texts">
+                    Enjoy the juiciest premium samgyupsal in town, 
+                    paired with unlimited side dishes. Come hungry, leave happy
+                </p>
+            </div>
+            
+        </div>
+        <div class="deals-grid">
+            <?php foreach ($mealPlatterPackages as $package): ?>
+                <div class="deal-card">
+                    <div class="deal-image">
+                        <img
+                            src="<?= htmlspecialchars($package['image']) ?>"
+                            alt="<?= htmlspecialchars($package['name']) ?>"
+                        >
+                        <?php if (!empty($package['badge'])): ?>
+                            <span class="deal-badge">
+                                <?= htmlspecialchars($package['badge']) ?>
+                            </span>
+                        <?php endif; ?>
+                        <div class="deal-price">
+                            <h3><?= htmlspecialchars($package['price']) ?></h3>
+                            <span>/ <?= htmlspecialchars($package['unit']) ?></span>
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <h3><?= htmlspecialchars($package['name']) ?></h3>
+                        <p class="deal-description">
+                            <?= htmlspecialchars($package['description']) ?>
+                        </p>
+                        <div class="deal-details">
+                            <div class="deal-pack">
+                                <span>
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <?= htmlspecialchars($package['inclusions']) ?>
+                            </div>
+                            <div class="deal-status">
+                                <span>
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                </span>
+                                <?= htmlspecialchars($package['status']) ?>
+                            </div>
+                        </div>
+                        <a
+                            href="<?= htmlspecialchars($package['link']) ?>"
+                            class="deal-button"
+                        >
+                            View package
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <section class="full-menu" id="premiumRiceBowlsSection">
+        <div class="full-menu-header">
+            <div class="full-menu-group">
+                <p class="full-menu-eyebrow">Featured placeholder</p>
+                <h3>Premium Rice Bowls</h3>
+                <p class="full-menu-texts">
+                    Enjoy the juiciest premium samgyupsal in town, 
+                    paired with unlimited side dishes. Come hungry, leave happy
+                </p>
+            </div>
+            
+        </div>
+        <div class="deals-grid">
+            <?php foreach ($premiumRiceBowlsPackages as $package): ?>
+                <div class="deal-card">
+                    <div class="deal-image">
+                        <img
+                            src="<?= htmlspecialchars($package['image']) ?>"
+                            alt="<?= htmlspecialchars($package['name']) ?>"
+                        >
+                        <?php if (!empty($package['badge'])): ?>
+                            <span class="deal-badge">
+                                <?= htmlspecialchars($package['badge']) ?>
+                            </span>
+                        <?php endif; ?>
+                        <div class="deal-price">
+                            <h3><?= htmlspecialchars($package['price']) ?></h3>
+                            <span>/ <?= htmlspecialchars($package['unit']) ?></span>
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <h3><?= htmlspecialchars($package['name']) ?></h3>
+                        <p class="deal-description">
+                            <?= htmlspecialchars($package['description']) ?>
+                        </p>
+                        <div class="deal-details">
+                            <div class="deal-pack">
+                                <span>
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <?= htmlspecialchars($package['inclusions']) ?>
+                            </div>
+                            <div class="deal-status">
+                                <span>
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                </span>
+                                <?= htmlspecialchars($package['status']) ?>
+                            </div>
                         </div>
                         <a
                             href="<?= htmlspecialchars($package['link']) ?>"

@@ -1,0 +1,14 @@
+
+{
+    "name": "ei-samgy/booking-system",
+    "description": "Restaurant Booking Website for Ei SAMGY ed Dagupan",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "php": ">=8.1"
+    }
+}
