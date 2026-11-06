@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
 
 </head>
 <body>
-    <?php require_once __DIR__ . '/includes/header.php'; ?>
+    <?php require_once __DIR__ . '/../includes/header.php'; ?>
         
     <!-- PAGE INTRODUCTION -->
     <section class="booking-intro">
@@ -478,6 +478,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
         <p>Cancelled / Completed / No-show also tracked by staff</p>
     </section>
 
-    <?php require_once __DIR__ . '/includes/footer.php'; ?>
+    <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

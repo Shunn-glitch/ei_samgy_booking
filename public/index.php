@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <?php require_once __DIR__ . '/includes/header.php'; ?>
+    <?php require_once __DIR__ . '/../includes/header.php'; ?>
 
     <main>
         <section class="hero">
@@ -449,7 +449,7 @@
         </section>
 
 
-        <?php require_once __DIR__ . '/includes/footer.php'; ?>
+        <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 
     </main>
 </body>

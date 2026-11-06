@@ -2984,14 +2984,17 @@ h1, h2, h3, h4, h5, h6 {
 
     transition: border 0.3s ease
                 background 0.3s ease
-                transform 0.3s ease;
+                transform 0.3s ease
+                box-shadow 0.5s ease;
 }
 
 .menu-header-choice:hover {
     border: 1px solid var(--gold);
     background-color: var(--charcoal-hover);
     transform: translateY(-2px);
+    box-shadow: 0 1px 5px var(--muted-foreground);
 }
+
 
 /* ------- right side menu header -------- */
 
@@ -3008,6 +3011,14 @@ h1, h2, h3, h4, h5, h6 {
     height: 240px;
     width: 240px;
     object-fit: cover;
+    border-radius: var(--Extra-Large);
+
+    transition: all 0.5s ease;
+}
+
+.menu-header-right img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1px 5px var(--cream);
 }
 
 /* =======================================
