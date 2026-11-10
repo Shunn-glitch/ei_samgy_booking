@@ -130,7 +130,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (idx === 0) c.classList.add('active');
                 else c.classList.remove('active');
             });
-            if (dateInput) dateInput.value = "2026-10-24"; // Re-sync base value parameter
+            if (dateInput) {
+                const today = new Date();
+                const localDate = new Date(
+                    today.getTime() - today.getTimezoneOffset * 60000
+                ).toISOString().split('T')[0];
+
+                dateInput.value = localDate;
+                dateInput.min = localDate;
+            }
 
             // E. Clean and uncheck time-grid active highlights
             timeChips.forEach(c => c.classList.remove('active'));
@@ -142,6 +150,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 else c.classList.remove('active');
             });
             if (seatingInput) seatingInput.value = "Family hall";
+        });
+    }
+
+    // =============================================================
+    // 7. RESERVATION FORM VALIDATION
+    // =============================================================
+    if (reservationForm) {
+        reservationForm.addEventListener('submit', (event) => {
+            if (!hiddenTimeInput || hiddenTimeInput.value.trim() === "") {
+                event.preventDefault();
+
+                alert("Please select your reservation time.");
+
+                document.querySelector('time-grid').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            return
+            }
         });
     }
 });

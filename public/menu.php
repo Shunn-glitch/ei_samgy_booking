@@ -1,4 +1,9 @@
 <?php 
+
+$pageTitle  = 'Menu - Ei Samgyed Dagupan';
+$activePage = 'menu';
+
+require_once __DIR__ .'/../includes/header.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Data\MenuData;
@@ -7,24 +12,7 @@ $mealPlatterPackages = MenuData::getMealPlatters();
 $premiumRiceBowlsPackages = MenuData::getPremiumRiceBowls();
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js" defer></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-</head>
 <body>
     <?php require_once __DIR__ . '/../includes/header.php'; ?>
     <section class="menu-header">
@@ -238,8 +226,23 @@ $premiumRiceBowlsPackages = MenuData::getPremiumRiceBowls();
         </div>
     </section>
 
+    <section class="menu-page-bottom">
+        <p class="menu-bottom-note">
+            Prices are in Philippine pesos and may change. Please tell our staff about any allergies.
+        </p>
+        <div class="menu-bottom-wrapper">
+            <div>
+                <h2>Hungry yet? Reserve your table.</h2>
+                <p>Book ahead so your grill is ready when you arrive.</p>
+            </div>
 
+            <div>
+                <a href="reservation.php" class="reserve-btn">
+                    Reserve a Table
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
     <?php require_once __DIR__ .'/../includes/footer.php'; ?>
 </body>
-
-</html>

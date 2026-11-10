@@ -92,7 +92,7 @@ $hotDealsPackages = MenuData::getHotDeals();
             </div>
 
             <div class="hero-image">
-                <img src="assets/images/beef.jpg" alt="beef i guess">
+                <img src="assets/images/pork.jpg" alt="pork image">
 
                 <div class="hero-image-overlay"></div>
 
@@ -332,7 +332,7 @@ $hotDealsPackages = MenuData::getHotDeals();
                         <div class="visit-detail-box">
                             <i class="fa-solid fa-location-dot"></i>
                             <div class="visit-box">
-                                <h3>Arellano St., Dagupan City</h3>
+                                <h3>Perez Blvd, Dagupan City</h3>
                                 <p>Pangasinan, Philippines</p>
                             </div>
                             
@@ -350,29 +350,29 @@ $hotDealsPackages = MenuData::getHotDeals();
 
             <!-- RIGHT SIDE: RESERVATION -->
             <div class="visit-right">
-                <div class="reservation-card">
+                <div class="reservation-operating-card">
 
                     <h3>Operating hours</h3>
 
                     <div class="operating-hours">
-                        <div class="hours-row">
+                        <div class="operating-hours-row">
                             <span>Monday – Thursday</span>
-                            <strong>11:00 AM – 9:00 PM</strong>
+                            <strong>11:00 AM – 10:00 PM</strong>
                         </div>
 
-                        <div class="hours-row">
+                        <div class="operating-hours-row">
                             <span>Friday – Sunday</span>
                             <strong>11:00 AM – 10:00 PM</strong>
                         </div>
 
-                        <div class="hours-row">
+                        <div class="operating-hours-row">
                             <span>Holidays</span>
-                            <p class="hours-row-desc">Message us first</p>
+                            <p class="operating-hours-row-desc">Message us first</p>
                         </div>
 
                     </div>
 
-                    <a href="booking.php" class="reservation-submit-btn">
+                    <a href="reservation.php" class="reservation-operating-btn">
                         Submit Reservation Request
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>

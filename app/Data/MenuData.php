@@ -8,7 +8,7 @@ class MenuData {
         return [
             [
                 "name" => "Classic Unli Samgy",
-                "image" => "assets/images/classic_unli_samgy.jpg",
+                "image" => "assets/images/pork.jpg",
                 "price" => "₱299",
                 "unit" => "head",
                 "badge" => "Best seller",

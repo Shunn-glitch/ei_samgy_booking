@@ -1,5 +1,9 @@
 
 <?php
+$pageTitle  = 'Reservation - Ei Samgyed Dagupan';
+$activePage = 'reservation';
+
+require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\BookingController;
@@ -13,11 +17,11 @@ $success = false;
 // Form submission (database integration will come later)
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
 
-    $customer_name = trim($_POST["customer_name"] ?? "");
+    $customer_name = trim($_POST["full_name"] ?? "");
     $phone = trim($_POST["phone"] ?? "");
     $email = trim($_POST["email"] ?? "");
-    $booking_date = $_POST["booking_date"] ?? "";
-    $booking_time = $_POST["booking_time"] ?? "";
+    $booking_date = $_POST["reservation_date"] ?? "";
+    $booking_time = $_POST["reservation_time"] ?? "";
     $guests = (int)($_POST["guests"] ?? 0);
 
     if ($customer_name === "") {
@@ -52,27 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
 }
 ?>
 
+<?php if (!empty($errors)): ?>
+    <div class="form-errors">
+        <strong>Please check the following:</strong>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Page</title>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js" defer></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-</head>
-<body>
-    <?php require_once __DIR__ . '/../includes/header.php'; ?>
         
     <!-- PAGE INTRODUCTION -->
     <section class="booking-intro">
@@ -127,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
 
     <!-- BOOKING CONTENT -->
     <section class="booking-layout">
+        
 
         <!-- LEFT SIDE: RESERVATION FORM -->
         <div class="reservation-card">
@@ -146,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
                     
             </div>
 
-            <form id="reservationForm">
+            <form id="reservationForm" method="POST" action="">
 
                 <!-- CUSTOMER INFORMATION -->
                 <div class="form-section">
@@ -229,7 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
                                 <button type="button" class="time-chip" data-time="7:00 PM">7:00 PM</button>
                                 <button type="button" class="time-chip" data-time="7:30 PM">7:30 PM</button>
                             </div>
-                            <input type="hidden" id="selectedTime" name="reservation_time" required>
+                            <input type="hidden" id="selectedTime" name="reservation_time" value="">
                             <p class="time-note">Peak hours: 6-8 PM. Arrive within 15 mins of time.</p>
             
                             
@@ -275,9 +273,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
                 </div>
 
 
-                
-
-
                 <!-- IF THERE KID -->
                 <div class="form-section">
 
@@ -314,7 +309,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
 
                 <!-- SUBMIT -->
                 <div class="form-actions-row">
-                    <button type="submit" class="submit-booking-btn">
+                    <button type="submit" name="submit_booking" class="submit-booking-btn">
                         Submit Reservation Request
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
@@ -324,13 +319,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
                     </button>
                 </div>
 
-                <p class="form-footer-notice">
+            </form>
+
+            <p class="form-footer-notice">
                     By submitting, you agree to be contacted about your booking. 
                     We never share your details.
                 </p>
-
-            </form>
-
         </div>
 
 
@@ -373,7 +367,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
             </div>
 
             <!-- BOOKING STATUS -->
-            <div class="status-card">
+            <div class="status-card" id="bookingStatus">
 
                 <div class="status-card-heading">
                     <h2>Check booking status</h2>
@@ -484,5 +478,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit_booking"])) {
     </section>
 
     <?php require_once __DIR__ . '/../includes/footer.php'; ?>
-</body>
-</html>

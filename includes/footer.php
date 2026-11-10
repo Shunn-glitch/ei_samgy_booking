@@ -1,11 +1,11 @@
-<footer class="site-footer">
+<footer class="site-footer" id="footerSection">
     <div class="footer-rows">
-        <div class="footer-column">
+        <div class="footer-column footer-brand">
 
             <div class="footer-logo">
                 <div class="logo-icon">
                     <a href="index.php">
-                        <img src="assets/images/logo(3).png" alt="EI">
+                        <img src="<?= $baseUrl ?>assets/images/logo(3).png" alt="EI">
                     </a>
                 </div>
 
@@ -28,21 +28,21 @@
             </div>
         </div>
 
-        <div class="footer-column">
+        <div class="footer-column footer-explore">
             <h4 class="footer-column-eyebrow">EXPLORE</h4>
             <a href="index.php">Home</a>
-            <a href="home.php">Menu &amp; Packages</a>
+            <a href="menu.php">Menu &amp; Packages</a>
             <a href="about.php">About Us</a>
             <a href="reservation.php">Reservations</a>
             <a href="booking.php">Check Booking</a>
         </div>
 
-        <div class="footer-column">
+        <div class="footer-column footer-visit">
             <h4 class="footer-column-eyebrow">VISIT US</h4>
             
             <div class="footer-row-contact">
                 <i class="fa-solid fa-location-dot"></i>
-                Arellano St., Dagupan City, Pangasinan
+                Perez Blvd, Dagupan City, Pangasinan
             </div>
             <div class="footer-row-contact">
                 <i class="fa-solid fa-phone"></i>
@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div class="footer-column">
+        <div class="footer-column footer-schedule">
             <h4 class="footer-column-eyebrow">HOURS</h4>
             <div class="hours-time">
                 <div class=footer-hours-row>
@@ -84,3 +84,5 @@
         <p>Reservation requests are pending until confirmed by staff.</p>
     </div>
 </footer>
+</body>
+</html>
