@@ -1,0 +1,591 @@
+/* ==========================================================
+   Ei Samgyed Dagupan – Admin / staff area styles
+   Uses the same :root variables as menu.css (copied below)
+   ========================================================== */
+
+:root {
+    --background: #faf5eb;
+    --forebackground: #171210;
+    --border: #e7dbc3;
+    --input: #ffffff;
+    --primary: #b91c1c;
+    --primary-hover: #991b1b;
+    --primary-foreground: #fff7ed;
+    --muted: #ece0c8;
+    --muted-foreground: #857262;
+    --charcoal: #171210;
+    --charcoal-hover: #29221e;
+    --charcoal-soft: #231b17;
+    --charcoal-line: #332825;
+    --cream: #faf5eb;
+    --cream-dark: #efe4cd;
+    --ember: #e4572e;
+    --gold: #c9a15a;
+    --moss: #4a5a3b;
+    --success: #2e7d4f;
+
+    --Body: 'DM Sans', sans-serif;
+    --Heading: 'PT Serif', serif;
+
+    --Medium: 8px;
+    --Large: 12px;
+    --Extra-Large: 24px;
+
+    --extra-small: 12px;
+    --small: 14px;
+    --base: 16px;
+    --large: 18px;
+    --huge: 24px;
+    --extra-huge: 30px;
+}
+
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--forebackground);
+    font-family: var(--Body);
+    font-size: var(--small);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    font-family: var(--Heading);
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.i {
+    width: 1.15em;
+    height: 1.15em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: none;
+}
+
+
+/* ---------- Layout: sidebar + content ---------- */
+
+.admin {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 20px 14px;
+    overflow-y: auto;
+    background: var(--charcoal);
+    color: var(--cream);
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 8px 22px;
+}
+
+.sidebar .logo img {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: var(--Medium);
+}
+
+.sidebar .logo span {
+    font: 700 16px/1.1 var(--Heading);
+}
+
+.sidebar .logo small {
+    display: block;
+    color: var(--gold);
+    font: 700 10px var(--Body);
+    letter-spacing: 0.04em;
+}
+
+.sidebar h4 {
+    margin: 18px 10px 6px;
+    color: var(--gold);
+    font: 700 11px var(--Body);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+    padding: 9px 12px;
+    border-radius: var(--Medium);
+    color: var(--cream);
+    font-weight: 500;
+}
+
+.sidebar a:hover {
+    background: var(--charcoal-hover);
+}
+
+.sidebar a.active {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.content {
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--border);
+    background: #fffaf0;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: var(--huge);
+}
+
+.topbar .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted-foreground);
+}
+
+.topbar .avatar {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.page {
+    padding: 24px 28px 40px;
+}
+
+.page > p.intro {
+    margin: 0 0 20px;
+    color: var(--muted-foreground);
+}
+
+
+/* ---------- Cards, stats, grids ---------- */
+
+.card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--Large);
+    background: #fffaf0;
+    box-shadow: 0 2px 8px rgba(60, 40, 20, 0.06);
+}
+
+.card h2 {
+    margin: 0 0 14px;
+    font-size: var(--large);
+}
+
+.card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.card-head h2 {
+    margin: 0;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--Large);
+    background: #fffaf0;
+}
+
+.stat span {
+    color: var(--muted-foreground);
+    font-size: var(--extra-small);
+}
+
+.stat strong {
+    display: block;
+    margin-top: 4px;
+    color: var(--primary);
+    font: 700 var(--extra-huge) var(--Heading);
+}
+
+.stat small {
+    color: var(--muted-foreground);
+}
+
+.cols-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.cols-2-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.note {
+    margin: 0 0 20px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--Medium);
+    background: var(--cream-dark);
+    font-size: var(--extra-small);
+}
+
+
+/* ---------- Tables ---------- */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    color: var(--muted-foreground);
+    font-size: var(--extra-small);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+td.actions {
+    display: flex;
+    gap: 6px;
+}
+
+
+/* ---------- Buttons, status pills ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--Medium);
+    background: #fff;
+    font: 700 var(--extra-small) var(--Body);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--cream-dark);
+}
+
+.btn.red {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.btn.red:hover {
+    background: var(--primary-hover);
+}
+
+.btn.green {
+    border-color: var(--success);
+    background: var(--success);
+    color: #fff;
+}
+
+.btn.dark {
+    border-color: var(--charcoal);
+    background: var(--charcoal);
+    color: var(--cream);
+}
+
+.btn.sm {
+    padding: 5px 10px;
+}
+
+.pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.pill.pending   { background: var(--ember); }
+.pill.confirmed { background: var(--success); }
+.pill.rejected  { background: var(--primary); }
+.pill.cancelled { background: var(--muted-foreground); }
+.pill.seated    { background: var(--moss); }
+.pill.completed { background: var(--charcoal); }
+.pill.noshow    { background: #8a5a14; }
+.pill.available { background: var(--success); }
+.pill.reserved  { background: var(--gold); color: var(--charcoal); }
+.pill.occupied  { background: var(--moss); }
+.pill.unavail   { background: var(--muted-foreground); }
+
+
+/* ---------- Forms ---------- */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 16px;
+}
+
+.form-grid .full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--Medium);
+    background: #fff;
+    font: inherit;
+    color: inherit;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    margin-right: 6px;
+}
+
+.checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+}
+
+.checks label {
+    margin: 0;
+    font-weight: 500;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 12px;
+    align-items: end;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+
+/* ---------- Lists, timeline, bars ---------- */
+
+.timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 16px 22px;
+    border-left: 2px solid var(--border);
+}
+
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.timeline small {
+    display: block;
+    color: var(--muted-foreground);
+}
+
+.bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    height: 180px;
+    padding-top: 10px;
+}
+
+.bar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    font-size: var(--extra-small);
+}
+
+.bar i {
+    display: block;
+    width: 100%;
+    max-width: 48px;
+    border-radius: 6px 6px 0 0;
+    background: var(--primary);
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tabs a {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 700;
+}
+
+.tabs a.active {
+    border-color: var(--charcoal);
+    background: var(--charcoal);
+    color: var(--cream);
+}
+
+
+/* ---------- Login page ---------- */
+
+.login-body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: var(--charcoal);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    border: 2px solid var(--gold);
+    border-radius: var(--Extra-Large);
+    background: #fffaf0;
+}
+
+.login-card h1 {
+    margin: 0 0 4px;
+    font-size: var(--huge);
+}
+
+.login-card p {
+    margin: 0 0 20px;
+    color: var(--muted-foreground);
+}
+
+.login-card .f {
+    margin-bottom: 14px;
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1000px) {
+    .admin {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cols-2,
+    .cols-2-1,
+    .filters,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
